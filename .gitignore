@@ -1,0 +1,4 @@
+.local_backups/
+*.py
+.DS_Store
+Thumbs.db
