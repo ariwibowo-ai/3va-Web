@@ -7,7 +7,8 @@
     '3VA-SRV-05': { name: 'Pools & Spa Maintenance', agencyFee: '10% – 11% Client Agency Fee (0% Worker Cut)', rate: 'IDR 650k – 1.2M / mo · IDR 350k – 600k / visit' },
     '3VA-SRV-06': { name: 'MEP & Power Engineering', agencyFee: '12% – 15% Client Agency Fee (0% Worker Cut)', rate: 'IDR 250k – 450k / point · Retainer: IDR 2.0M – 4.5M / mo' },
     '3VA-SRV-07': { name: 'Air Conditioner & Pest Control', agencyFee: '12% – 13% Client Agency Fee (0% Worker Cut)', rate: 'AC Wash: IDR 85k – 125k · Pest: IDR 250k – 500k' },
-    '3VA-SRV-08': { name: 'Hospitality Trainer Expert', agencyFee: '14% – 15% Client Agency Fee (0% Worker Cut)', rate: 'Workshop: IDR 750k – 1.5M / day · IDR 8.5M – 15M / mo' }
+    '3VA-SRV-08': { name: 'Hospitality Trainer Expert', agencyFee: '14% – 15% Client Agency Fee (0% Worker Cut)', rate: 'Workshop: IDR 750k – 1.5M / day · IDR 8.5M – 15M / mo' },
+    '3VA-SRV-09': { name: 'Fire Safety Equipment Supplier', agencyFee: '12% – 15% Client Agency Fee (0% Worker Cut)', rate: 'Inspection/Refill: IDR 250k – 850k / unit · System: Quoted' }
   };
 
   window.selectServiceCode = function(code, label) {
@@ -74,6 +75,11 @@
       const opt = document.createElement('option'); opt.value = 'Hospitality Trainer Expert';
       opt.textContent = 'Hospitality Trainer Expert (IDR 750k–1.5M/day · 8.5M–15M/mo)';
       vCat.appendChild(opt);
+    }
+    if (vCat && ![...vCat.options].some(o => o.value === 'Fire Safety Equipment Supplier')) {
+      const opt9 = document.createElement('option'); opt9.value = 'Fire Safety Equipment Supplier';
+      opt9.textContent = 'Fire Safety Equipment Supplier (APAR, Hydrant, Alarm & K3 Audit)';
+      vCat.appendChild(opt9);
     }
   });
 })();

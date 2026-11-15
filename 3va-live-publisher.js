@@ -16,7 +16,8 @@
       'Air Conditioner (AC) Technician': 'IDR 85,000 – 125,000 / unit wash · IDR 250k – 450k service',
       'Genset Technician': 'IDR 350,000 – 750,000 / call-out & load test',
       'Water & Wastewater Treatment (WTP / IPAL) Operator': 'IDR 350,000 – 650,000 / visit · IDR 3.5M – 6.0M / month',
-      'Pest & Termite Control Technician': 'IDR 250,000 – 500,000 / visit (Residential / Villa)'
+      'Pest & Termite Control Technician': 'IDR 250,000 – 500,000 / visit (Residential / Villa)',
+      'Fire Safety Equipment Specialist': 'IDR 250,000 – 850,000 / visit or unit (APAR Inspection, Refill & K3 Audit)'
     },
     'Corporate Vendor': {
       'Civil & Building Contractor': 'IDR 3,200,000 – 5,500,000 / m² (Turnkey Construction / Fit-Out)',
@@ -25,7 +26,8 @@
       'Heavy Equipment Rental (Alat Berat)': 'IDR 350,000 – 950,000 / hour (Excavator / Dozer / Loader)',
       'Corporate Legal, Notary & Licensing Firm': 'IDR 5,000,000 – 25,000,000 / corporate & PMA / PBG package',
       'Pest & Termite Control Company': 'IDR 15,000 – 35,000 / m² (Anti-Termite Soil Injection & Warranty)',
-      'Facility Management & MEP Contractor': 'IDR 4,500,000 – 15,000,000 / month (Hotel / Resort Retainer)'
+      'Facility Management & MEP Contractor': 'IDR 4,500,000 – 15,000,000 / month (Hotel / Resort Retainer)',
+      'Fire Safety Equipment': 'IDR 5,000,000 – 150,000,000+ / package (APAR Supply, Hydrant, Fire Alarm & Suppression)'
     }
   };
   function compressImage(file) {
