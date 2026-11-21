@@ -12,9 +12,13 @@
   };
 
   window.selectServiceCode = function(code, label) {
-    const mem = document.getElementById('membership');
-    if (mem) { mem.style.display = 'block'; mem.scrollIntoView({ behavior: 'smooth' }); }
-    if (typeof switchTab === 'function') switchTab('service');
+    if (typeof window.openLogin === 'function') window.openLogin();
+    if (typeof window.switchTab === 'function') window.switchTab('service');
+    var uRole = document.getElementById('srvRole');
+    if (uRole) {
+      uRole.value = String(code).indexOf('CORP') !== -1 ? 'Corporate Vendor' : 'Human Expert';
+      if (typeof uRole.onchange === 'function') uRole.onchange();
+    }
     const panel = document.getElementById('panel-service');
     if (!panel) return;
     const catSel = panel.querySelectorAll('select')[1];
@@ -82,4 +86,25 @@
       vCat.appendChild(opt9);
     }
   });
+})();
+(function() {
+  function injectPostMajeureVault() {
+    var isAuth = window.is3vaSuperAdmin || sessionStorage.getItem('3va_author_session_open') === '1' || sessionStorage.getItem('3va_sa_unlocked') === '1';
+    var box = document.getElementById('realtimeLedgerBox');
+    if (!isAuth || !box || document.getElementById('evaPostMajeureVault')) return;
+    var v = document.createElement('div');
+    v.id = 'evaPostMajeureVault';
+    v.style.cssText = 'margin-top:12px;padding:12px;background:#fefce8;border:1.5px solid #ca8a04;border-radius:6px;font-size:12px;color:#1e293b;';
+    v.innerHTML = '<div style="font-weight:800;color:#854d0e;margin-bottom:4px;">🛡️ AUTHOR CONFIDENTIAL REMINDER: POST-MAJEURE RESERVE &amp; REKENING KHUSUS</div>' +
+      '<div style="font-size:11px;line-height:1.5;margin-bottom:8px;">• <b>Alokasi Internal:</b> Maks. <b>2,5%</b> dari 100% Net Profit transaksi <i>Land + Property</i> (Closed by Buyer) &amp; maks. <b>2,5%</b> dari 100% Net Profit transaksi <i>Services</i> (Closed by Service User).<br>' +
+      '• <b>Pemisahan Rekening:</b> Wajib segera dipindahkan ke <b>Rekening Khusus Perusahaan (Segregated Reserve Account)</b> selain rekening operasional utama EASTVENTURA agar tidak tercampur.<br>' +
+      '• <b>Tutup Buku 1 Tahun Kalender:</b> Jika nihil klaim Force Majeure selama 1 tahun penuh, dana kembali menjadi hak EASTVENTURA untuk disalurkan ke program <b>Infaq / Shodaqoh / Jariyah</b>.</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">' +
+      '<input type="number" id="pmNetProfitInput" placeholder="Input Net Profit Closing (IDR)" style="padding:5px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:12px;width:210px;">' +
+      '<button type="button" class="btn" style="padding:5px 10px;font-size:11.5px;" onclick="(function(){var n=parseFloat(document.getElementById(\'pmNetProfitInput\').value)||0;var r=Math.round(n*0.025);document.getElementById(\'pmCalcOut\').innerHTML=\'Transfer ke Rek. Khusus (2,5%): <b>Rp \'+r.toLocaleString(\'id-ID\')+\'</b> | Net Profit Utama: <b>Rp \'+(n-r).toLocaleString(\'id-ID\')+\'</b>\';})()">Hitung Transfer Rek. Khusus</button>' +
+      '<span id="pmCalcOut" style="font-size:11.5px;color:#065f46;"></span></div>';
+    box.appendChild(v);
+  }
+  window.addEventListener('DOMContentLoaded', function() { setTimeout(injectPostMajeureVault, 500); });
+  setInterval(injectPostMajeureVault, 1500);
 })();

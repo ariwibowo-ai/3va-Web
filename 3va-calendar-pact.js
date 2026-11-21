@@ -33,7 +33,7 @@
       </div>
       <div id="bpjsVendorOptBox" style="margin-top:10px;padding-top:8px;border-top:1px dashed #b5c7af">
         <strong style="font-size:12px">🛡️ BPJS Ketenagakerjaan (PP No. 44/2015 — JKK &amp; JKM Protection)</strong>
-        <label class="check-item" style="margin-top:4px"><input type="checkbox" id="vendorBpjsOptIn"> <span>For contracts &gt; 1 month (if not registered directly by Service User), authorize <strong>3va.id</strong> to process online BPJS JKK/JKM registration (statutory JKK 0.24%–1.74% + JKM 0.30% + <strong>one-time flat admin fee IDR 200,000</strong> deducted transparently on first payout).</span></label>
+        <label class="check-item" style="margin-top:4px"><input type="checkbox" id="vendorBpjsOptIn"> <span>For contracts &gt; 1 month (if not registered directly by Service User), authorize <strong>eastventura.biz.id</strong> to process online BPJS JKK/JKM registration (statutory JKK 0.24%–1.74% + JKM 0.30% + <strong>one-time flat admin fee IDR 200,000</strong> deducted transparently on first payout).</span></label>
       </div>`;
     basis.closest('.form-row').insertAdjacentElement('afterend', box);
 
@@ -91,8 +91,8 @@
     const code = document.getElementById('srvSelectedCodeBanner')?.innerText.split('\n') || 'Service Request';
     const d1 = document.getElementById('userWorkFrom')?.value || 'Immediate';
     const d2 = document.getElementById('userWorkTo')?.value || 'TBD';
-    if (confirm('URGENT SERVICE CALL (3va.id):\nNeed urgent deployment on a holiday/rest day?\n\nClick OK to connect via WhatsApp (+62 812-3707-9929).')) {
-      const txt = encodeURIComponent('Halo Admin Service Call 3va.id, saya membutuhkan layanan URGENT pada hari libur/khusus.\nDetail: ' + code + '\nTarget Jadwal: ' + d1 + ' s.d. ' + d2);
+    if (confirm('URGENT SERVICE CALL (eastventura.biz.id):\nNeed urgent deployment on a holiday/rest day?\n\nClick OK to connect via WhatsApp (+62 812-3707-9929).')) {
+      const txt = encodeURIComponent('Halo Admin Service Call eastventura.biz.id, saya membutuhkan layanan URGENT pada hari libur/khusus.\nDetail: ' + code + '\nTarget Jadwal: ' + d1 + ' s.d. ' + d2);
       window.open('https://wa.me' + txt, '_blank');
     }
   };
@@ -111,9 +111,9 @@
       </div>
       <div style="margin-top:14px;font-size:13px;line-height:1.5">
         <p><strong>PAGE 1 OF 2 — NON-CIRCUMVENTION, TRANSPARENCY &amp; WORKER WELFARE</strong></p>
-        <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>1. Anti-Circumvention (12 Months): Both parties agree not to bypass 3va.id for direct transactions or poaching within 12 months.</u><br><em style="color:#444">1. Anti-Bypass (12 Bulan): Kedua belah pihak sepakat tidak melakukan transaksi langsung di luar 3va.id atau membajak SDM selama 12 bulan.</em></label>
+        <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>1. Anti-Circumvention (12 Months): Both parties agree not to bypass eastventura.biz.id for direct transactions or poaching within 12 months.</u><br><em style="color:#444">1. Anti-Bypass (12 Bulan): Kedua belah pihak sepakat tidak melakukan transaksi langsung di luar eastventura.biz.id atau membajak SDM selama 12 bulan.</em></label>
         <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>2. Zero Wage Deduction &amp; Agency Fee (10%–17%): Client pays agency/platform fees separately; 100% of agreed wages belong to the worker.</u><br><em style="color:#444">2. Tanpa Potongan Upah &amp; Agency Fee (10%–17%): Klien membayar biaya agensi/platform secara terpisah; 100% upah yang disepakati menjadi hak penuh pekerja.</em></label>
-        <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>3. BPJS Ketenagakerjaan (PP No. 44/2015 JKK &amp; JKM): Mandatory registration by Service User for monthly contracts &gt; 1 month, or self/3va.id online facilitation (IDR 200,000 flat admin) for short-term/opted-in workers.</u><br><em style="color:#444">3. BPJS Ketenagakerjaan (PP No. 44/2015 JKK &amp; JKM): Pendaftaran wajib oleh Pengguna Jasa untuk kontrak bulanan &gt; 1 bulan, atau mandiri/fasilitasi online 3va.id (admin flat IDR 200.000) bagi pekerja jangka pendek/yang menyetujui.</em></label>
+        <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>3. BPJS Ketenagakerjaan (PP No. 44/2015 JKK &amp; JKM): Mandatory registration by Service User for monthly contracts &gt; 1 month, or self/eastventura.biz.id online facilitation (IDR 200,000 flat admin) for short-term/opted-in workers.</u><br><em style="color:#444">3. BPJS Ketenagakerjaan (PP No. 44/2015 JKK &amp; JKM): Pendaftaran wajib oleh Pengguna Jasa untuk kontrak bulanan &gt; 1 bulan, atau mandiri/fasilitasi online eastventura.biz.id (admin flat IDR 200.000) bagi pekerja jangka pendek/yang menyetujui.</em></label>
         <hr style="margin:14px 0;border:0;border-top:1px dashed #999">
         <p><strong>PAGE 2 OF 2 — ESCROW 70/30, INDONESIAN WORKING CALENDAR &amp; FORCE MAJEURE</strong></p>
         <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>4. 70/30 Escrow &amp; Working Calendar Compliance: Parties honor 70% DP / 30% completion escrow and Indonesian rest days/religious holidays.</u><br><em style="color:#444">4. Kepatuhan Escrow 70/30 &amp; Kalender Kerja Indonesia: Para pihak mematuhi escrow 70% DP / 30% pelunasan serta hari libur nasional/keagamaan Indonesia.</em></label>
@@ -130,9 +130,15 @@
     document.body.appendChild(modal);
     document.getElementById('pactSignConfirmBtn').onclick = () => {
       const chks = [...modal.querySelectorAll('.pact-chk')];
+      const isAuth = window.is3vaSuperAdmin || sessionStorage.getItem('3va_author_session_open')==='1' || sessionStorage.getItem('3va_sa_unlocked')==='1';
+      if (isAuth) chks.forEach(c => c.checked = true);
       if (chks.some(c => !c.checked)) return alert('Please check all 5 bilingual Integrity Pact clauses before signing.');
       modal.remove();
-      if (typeof onConfirm === 'function') onConfirm();
+      if (typeof window.open3va === 'function') {
+        const catEl = document.getElementById("srvUserCategory") || document.querySelector("#panel-service select:not(#srvRole)");
+        const catTxt = catEl ? catEl.value : "Service User Request";
+        window.open3va("service", 0, null, { code: "3VA-SRV-EXP (" + catTxt + ")" });
+      } else if (typeof onConfirm === 'function') onConfirm();
     };
   };
 

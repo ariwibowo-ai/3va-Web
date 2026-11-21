@@ -17,7 +17,10 @@
       'Genset Technician': 'IDR 350,000 – 750,000 / call-out & load test',
       'Water & Wastewater Treatment (WTP / IPAL) Operator': 'IDR 350,000 – 650,000 / visit · IDR 3.5M – 6.0M / month',
       'Pest & Termite Control Technician': 'IDR 250,000 – 500,000 / visit (Residential / Villa)',
-      'Fire Safety Equipment Specialist': 'IDR 250,000 – 850,000 / visit or unit (APAR Inspection, Refill & K3 Audit)'
+      'Fire Safety Equipment Specialist': 'IDR 250,000 – 850,000 / visit or unit (APAR Inspection, Refill & K3 Audit)',
+      'IT Programmer & Web/System Specialist': 'IDR 350,000 – 750,000 / day · IDR 4.5M – 9.0M / month',
+      'Interior Designer & Space Stylist': 'IDR 350,000 – 750,000 / day · IDR 3.5M – 8.0M / project',
+      'Public Area, Gardener & Nursery Specialist': 'IDR 150,000 – 300,000 / visit · IDR 2.5M – 4.2M / month'
     },
     'Corporate Vendor': {
       'Civil & Building Contractor': 'IDR 3,200,000 – 5,500,000 / m² (Turnkey Construction / Fit-Out)',
@@ -27,7 +30,9 @@
       'Corporate Legal, Notary & Licensing Firm': 'IDR 5,000,000 – 25,000,000 / corporate & PMA / PBG package',
       'Pest & Termite Control Company': 'IDR 15,000 – 35,000 / m² (Anti-Termite Soil Injection & Warranty)',
       'Facility Management & MEP Contractor': 'IDR 4,500,000 – 15,000,000 / month (Hotel / Resort Retainer)',
-      'Fire Safety Equipment': 'IDR 5,000,000 – 150,000,000+ / package (APAR Supply, Hydrant, Fire Alarm & Suppression)'
+      'Fire Safety Equipment': 'IDR 5,000,000 – 150,000,000+ / package (APAR Supply, Hydrant, Fire Alarm & Suppression)',
+      'Interior Design & Architectural Fit-Out': 'IDR 1,500,000 – 4,500,000 / m² or design package',
+      'Public Area, Garden Maintenance & Plant Nursery': 'IDR 2,500,000 – 12,000,000 / month (Resort / Estate Landscaping)'
     }
   };
   function compressImage(file) {
@@ -110,7 +115,7 @@
         });
         localStorage.setItem(LS_VENDORS, JSON.stringify(vendors));
         renderVendors(); vf.reset(); document.getElementById('vendorTariff').dataset.edited = ''; syncVendorForm();
-        alert('Published! ' + code + ' is now live in the 3va.id Service Vendor Directory.');
+        alert('Published! ' + code + ' is now live in the eastventura.biz.id Service Vendor Directory.');
         document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
       });
     }
@@ -129,7 +134,16 @@
         if (typeof listings !== 'undefined') listings.unshift(item);
         if (typeof renderListings === 'function') renderListings(item.type);
         if (typeof orig === 'function') { try { orig(e); } catch(_) {} }
-        alert('Published! Listing ' + code + ' is now live on the front catalog.');
+        var isAuth = Array.from(document.querySelectorAll("button")).some(function(b) { return /Author\s*\(Open\)/i.test(b.textContent || ""); }) || window.is3vaSuperAdmin || sessionStorage.getItem("3va_sa_unlocked") === "1";
+        if (isAuth) {
+          var t = document.createElement("div");
+          t.textContent = "✅ Author Mode: Listing " + code + " live on front catalog (Non-blocking).";
+          t.style.cssText = "position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:2147483647;background:#166534;color:#fff;border:1.5px solid #86efac;padding:9px 16px;border-radius:8px;font-size:12px;font-weight:700;box-shadow:0 8px 20px rgba(0,0,0,.35);";
+          document.body.appendChild(t);
+          setTimeout(function() { t.remove(); }, 3500);
+        } else {
+          alert('Published! Listing ' + code + ' is now live on the front catalog.');
+        }
       };
     }
   }

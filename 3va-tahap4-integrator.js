@@ -61,7 +61,7 @@
       '<div><div style="font-size:10.5px;font-weight:700;color:#8a6a14;font-family:sans-serif;">PAGE 1 OF 2 · EASTVENTURA (3VA.ID) OFFICIAL DIGITAL AGREEMENT</div><h3 style="margin:2px 0;font-size:16px;color:#162b22;">BILINGUAL INTEGRITY PACT &amp; SERVICE ESCROW COMMITMENT</h3></div>' +
       '<div style="text-align:right;font-family:monospace;font-size:10px;background:#f4f7f4;padding:5px 9px;border:1px solid #162b22;border-radius:4px;"><div style="letter-spacing:2px;font-weight:900;font-size:12px;">||||| || |||| ||| ||||</div><div>VERIFY: ' + verifyHash + '</div></div></div>' +
       '<div style="font-size:12px;line-height:1.5;margin-bottom:10px;">' +
-      '<label style="display:flex;gap:8px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="pact-req-chk"><span><u><strong>1. Non-Circumvention Clause:</strong> Both parties strictly agree not to bypass 3va.id for repeat engagements or direct off-platform payments within 24 months.</u><br><em style="color:#4b5563;"><strong>1. Klausul Anti-Bypass:</strong> Kedua belah pihak sepakat tidak memotong jalur 3va.id dalam transaksi lanjutan maupun pembayaran langsung di luar platform selama 24 bulan.</em></span></label>' +
+      '<label style="display:flex;gap:8px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="pact-req-chk"><span><u><strong>1. Non-Circumvention Clause:</strong> Both parties strictly agree not to bypass eastventura.biz.id for repeat engagements or direct off-platform payments within 24 months.</u><br><em style="color:#4b5563;"><strong>1. Klausul Anti-Bypass:</strong> Kedua belah pihak sepakat tidak memotong jalur eastventura.biz.id dalam transaksi lanjutan maupun pembayaran langsung di luar platform selama 24 bulan.</em></span></label>' +
       '<label style="display:flex;gap:8px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="pact-req-chk"><span><u><strong>2. Zero Worker Cut &amp; 70/30 Escrow:</strong> 100% of agreed worker fee belongs to the Individual Vendor. Platform/Agency fees (10%–17%) are paid separately by Service User.</u><br><em style="color:#4b5563;"><strong>2. Tanpa Potongan Pekerja &amp; Escrow 70/30:</strong> 100% upah menjadi hak penuh Individual Vendor. Biaya platform/agensi (10%–17%) dibayar terpisah oleh Service User.</em></span></label></div>' +
       '<div style="border-top:2px dashed #c59b27;padding-top:10px;">' +
       '<div style="font-size:10.5px;font-weight:700;color:#8a6a14;font-family:sans-serif;margin-bottom:6px;">PAGE 2 OF 2 · REAL-TIME 4-LINE TRANSPARENCY SCHEDULE</div>' +
@@ -90,8 +90,9 @@
       const vhash = modal.dataset.vhash || '3VA-VERIFIED';
       const vcode = modal.dataset.vcode || '3VA-SRV';
       modal.remove();
-      alert('✅ Electronically Signed (' + vhash + ')! Opening Verified Checkout & Real-Time Ledger...');
-      if (typeof window.openCheckoutModal === 'function') window.openCheckoutModal(vcode);
+      if (typeof window.open3va === "function") {
+        window.open3va("service", 0, null, { code: vcode });
+      }
     }
   });
 
