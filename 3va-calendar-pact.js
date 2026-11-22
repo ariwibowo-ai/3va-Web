@@ -137,7 +137,7 @@
       if (typeof window.open3va === 'function') {
         const catEl = document.getElementById("srvUserCategory") || document.querySelector("#panel-service select:not(#srvRole)");
         const catTxt = catEl ? catEl.value : "Service User Request";
-        window.open3va("service", 0, null, { code: "3VA-SRV-EXP (" + catTxt + ")" });
+        window.open3va("service", 0, null, { code: "3VA-XP (" + catTxt + ")" });
       } else if (typeof onConfirm === 'function') onConfirm();
     };
   };

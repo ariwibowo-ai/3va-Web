@@ -167,3 +167,107 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })();
+
+/* === SELECTIVE CARD ACTIVATOR & EXTENDED AUTHOR DRAWER === */
+(function() {
+  const ACT_KEY = '3va_activated_cards_v1';
+  const LAND_CODES = ['3VA-101', '3VA-102', '3VA-103'];
+  const PROP_CODES = ['3VA-201', '3VA-202', '3VA-203'];
+  const CORP_CODES = Array.from({length: 10}, (_, i) => '3VA-CV-' + String(i + 1).padStart(2, '0'));
+  const EXP_CODES  = Array.from({length: 18}, (_, i) => '3VA-XP-' + String(i + 1).padStart(2, '0'));
+  const ALL_CODES  = LAND_CODES.concat(PROP_CODES, CORP_CODES, EXP_CODES);
+
+  function getActiveSet() {
+    try {
+      const raw = localStorage.getItem(ACT_KEY);
+      return raw ? new Set(JSON.parse(raw)) : new Set();
+    } catch (e) { return new Set(); }
+  }
+  function saveActiveSet(set) {
+    localStorage.setItem(ACT_KEY, JSON.stringify(Array.from(set)));
+  }
+  function isAuthOpen() {
+    return sessionStorage.getItem('3va_author_session_open') === '1' || sessionStorage.getItem('3va_sa_unlocked') === '1';
+  }
+  function getCardCode(cardEl) {
+    const txt = (cardEl.textContent || '');
+    const m = txt.match(/3VA-(?:10\d|20\d|CV-\d{2}|XP-\d{2})/);
+    return m ? m[0] : '';
+  }
+  window.apply3vaSelectiveVisibility = function() {
+    const active = getActiveSet(), open = isAuthOpen();
+    const groups = [
+      { sel: '#featuredCards .property', box: '#featuredCards', msg: 'Featured verified assets are being curated for public release.' },
+      { sel: '#landCards .property',     box: '#landCards',     msg: 'Curated land listings are currently undergoing BPN & legal verification.' },
+      { sel: '#propertyCards .property', box: '#propertyCards', msg: 'Curated villas & hospitality properties are being prepared for release.' }
+    ];
+    groups.forEach(g => {
+      let shown = 0;
+      document.querySelectorAll(g.sel).forEach(el => {
+        const code = getCardCode(el), ok = !code || active.has(code);
+        el.style.display = (ok || open) ? '' : 'none';
+        el.style.opacity = (!ok && open) ? '0.42' : '1';
+        el.style.outline = (!ok && open) ? '2px dashed #b68a4c' : '';
+        if (ok) shown++;
+      });
+      const box = document.querySelector(g.box);
+      if (box) {
+        let ph = box.querySelector('.eva-empty-note');
+        if (!open && shown === 0) {
+          if (!ph) { ph = document.createElement('div'); ph.className = 'eva-empty-note'; ph.style.cssText = 'grid-column:1/-1;padding:18px;border:1px dashed #c59b27;background:#fbf9f3;color:#6d7066;font-size:13px;text-align:center;'; box.appendChild(ph); }
+          ph.textContent = g.msg;
+        } else if (ph) ph.remove();
+      }
+    });
+    document.querySelectorAll('#services .service-grid').forEach((grid, idx) => {
+      let shown = 0;
+      grid.querySelectorAll('.service').forEach(el => {
+        const code = getCardCode(el), ok = !code || active.has(code);
+        el.style.display = (ok || open) ? '' : 'none';
+        el.style.opacity = (!ok && open) ? '0.42' : '1';
+        el.style.outline = (!ok && open) ? '2px dashed #b68a4c' : '';
+        if (ok) shown++;
+      });
+      let ph = grid.querySelector('.eva-empty-note');
+      if (!open && shown === 0) {
+        if (!ph) { ph = document.createElement('div'); ph.className = 'eva-empty-note'; ph.style.cssText = 'grid-column:1/-1;padding:14px;border:1px dashed #c59b27;background:#fff;color:#6d7066;font-size:13px;text-align:center;'; grid.appendChild(ph); }
+        ph.textContent = idx === 0 ? 'Corporate Vendor (PT/CV) slots are currently in curation.' : 'Human Expert specialist slots are currently in curation.';
+      } else if (ph) ph.remove();
+    });
+    renderAuthorDrawer(open, active);
+  };
+  function renderAuthorDrawer(open, active) {
+    let dr = document.getElementById('evaAuthorDrawer');
+    if (!open) { if (dr) dr.remove(); return; }
+    if (!dr) {
+      dr = document.createElement('div');
+      dr.id = 'evaAuthorDrawer';
+      dr.style.cssText = 'position:fixed;left:12px;right:12px;bottom:54px;z-index:99990;background:#162b22;color:#fbf9f3;border:1.5px solid #c59b27;border-radius:10px;padding:12px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-height:46vh;overflow-y:auto;font-size:12px;';
+      document.body.appendChild(dr);
+    }
+    const mkPills = (title, codes) => '<div style="margin-top:6px;"><strong style="color:#f3d27a;">' + title + ':</strong> ' +
+      codes.map(c => {
+        const on = active.has(c);
+        return '<button type="button" data-code="' + c + '" style="margin:2px;padding:3px 7px;border-radius:4px;font-family:monospace;font-size:11px;cursor:pointer;border:1px solid #c59b27;background:' + (on ? '#c59b27' : '#234235') + ';color:' + (on ? '#162b22' : '#fbf9f3') + ';font-weight:' + (on ? '800' : '500') + ';">' + (on ? '✓ ' : '') + c + '</button>';
+      }).join('') + '</div>';
+    dr.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:1px solid rgba(197,155,39,.35);padding-bottom:6px;">' +
+      '<div><strong style="color:#f3d27a;letter-spacing:.6px;">✦ AUTHOR SELECTIVE CARD ACTIVATOR</strong> <span style="opacity:.85;">(' + active.size + ' / ' + ALL_CODES.length + ' Active for Public)</span></div>' +
+      '<div style="display:flex;gap:6px;">' +
+      '<button type="button" id="evaActAll" style="background:#c59b27;color:#162b22;border:none;padding:4px 9px;border-radius:4px;font-weight:700;cursor:pointer;">Activate All</button>' +
+      '<button type="button" id="evaHideAll" style="background:#7f1d1d;color:#fff;border:none;padding:4px 9px;border-radius:4px;font-weight:700;cursor:pointer;">Hide All (Soft Launch)</button>' +
+      '</div></div>' +
+      mkPills('Land for Sale', LAND_CODES) + mkPills('Property for Sale', PROP_CODES) +
+      mkPills('Corporate Vendor', CORP_CODES) + mkPills('Human Expert', EXP_CODES);
+    dr.querySelectorAll('button[data-code]').forEach(b => {
+      b.onclick = function() {
+        const s = getActiveSet(), code = this.dataset.code;
+        if (s.has(code)) s.delete(code); else s.add(code);
+        saveActiveSet(s); window.apply3vaSelectiveVisibility();
+      };
+    });
+    dr.querySelector('#evaActAll').onclick = function() { saveActiveSet(new Set(ALL_CODES)); window.apply3vaSelectiveVisibility(); };
+    dr.querySelector('#evaHideAll').onclick = function() { saveActiveSet(new Set()); window.apply3vaSelectiveVisibility(); };
+  }
+  window.addEventListener('DOMContentLoaded', () => setTimeout(window.apply3vaSelectiveVisibility, 350));
+  setInterval(window.apply3vaSelectiveVisibility, 900);
+})();

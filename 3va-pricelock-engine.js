@@ -1,8 +1,8 @@
 (function() {
   var HIGH_RISK = /MEP|Electrical|Genset|Pest|Termite|Fire|Civil|Foreman|Public Area|Gardener|Pool|AC/i;
   function isHumanMode(code) {
-    if (/3VA-SRV-CORP/i.test(code || "")) return false;
-    if (/3VA-SRV-EXP/i.test(code || "")) return true;
+    if (/3VA-CV/i.test(code || "")) return false;
+    if (/3VA-XP/i.test(code || "")) return true;
     var r = document.getElementById("srvRole") || document.querySelector("#panel-vendor select");
     return !r || /Human Expert|Individual/i.test(r.value || "Human Expert");
   }
@@ -44,7 +44,7 @@
   var origBuild = window.build3vaHumanPriceLockHTML, origRecalc = window.recalc3vaPriceLock;
   function fmtIDR(n) { return "Rp " + Math.round(n).toLocaleString("id-ID"); }
   window.build3vaHumanPriceLockHTML = function(catName) {
-    var isCorp = /3VA-SRV-CORP|Corporate|PT|CV/i.test(catName || "") || (/Corporate|PT|CV/i.test((document.getElementById("vendorRole")||{}).value||"") && !/3VA-SRV-EXP/i.test(catName||""));
+    var isCorp = /3VA-CV|Corporate|PT|CV/i.test(catName || "") || (/Corporate|PT|CV/i.test((document.getElementById("vendorRole")||{}).value||"") && !/3VA-XP/i.test(catName||""));
     if (!isCorp) return origBuild ? origBuild(catName) : "";
     return '<div id="evaCorpLockBox" style="margin:10px 0;padding:10px;border:1.5px solid #1e3a8a;border-radius:8px;background:#eff6ff;font-size:11.5px;color:#1e293b;">' +
       '<div style="font-weight:800;color:#1e3a8a;margin-bottom:6px;">🏢 CORPORATE VENDOR (PT / CV) B2B BOQ &amp; TAX LOCK</div>' +

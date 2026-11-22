@@ -1,21 +1,21 @@
 (function() {
   var CORP = [
-    ["3VA-SRV-CORP-01","Civil & Building Contractor"],["3VA-SRV-CORP-02","MEP, Genset & Solar Engineering"],
-    ["3VA-SRV-CORP-03","Elevator & Escalator Maintenance"],["3VA-SRV-CORP-04","Fire Safety & Hydrant Engineering"],
-    ["3VA-SRV-CORP-05","Corporate Legal, Notary & Licensing Firm"],["3VA-SRV-CORP-06","Commercial Pest & Termite Control"],
-    ["3VA-SRV-CORP-07","WTP / STP Water & Waste Treatment"],["3VA-SRV-CORP-08","Deep Well Drilling & Geoelectric Survey"],
-    ["3VA-SRV-CORP-09","Interior Design & Architectural Fit-Out"],["3VA-SRV-CORP-10","Public Area, Garden Maintenance & Plant Nursery"]
+    ["3VA-CV-01","Civil & Building Contractor"],["3VA-CV-02","MEP, Genset & Solar Engineering"],
+    ["3VA-CV-03","Elevator & Escalator Maintenance"],["3VA-CV-04","Fire Safety & Hydrant Engineering"],
+    ["3VA-CV-05","Corporate Legal, Notary & Licensing Firm"],["3VA-CV-06","Commercial Pest & Termite Control"],
+    ["3VA-CV-07","WTP / STP Water & Waste Treatment"],["3VA-CV-08","Deep Well Drilling & Geoelectric Survey"],
+    ["3VA-CV-09","Interior Design & Architectural Fit-Out"],["3VA-CV-10","Public Area, Garden Maintenance & Plant Nursery"]
   ];
   var EXP = [
-    ["3VA-SRV-EXP-01","Legal Advisor & Land Due Diligence"],["3VA-SRV-EXP-02","Sales & Land Consultant"],
-    ["3VA-SRV-EXP-03","Site Foreman & Building Supervisor"],["3VA-SRV-EXP-04","MEP & Electrical Technician"],
-    ["3VA-SRV-EXP-05","AC & Refrigeration Specialist"],["3VA-SRV-EXP-06","Housekeeper, Butler & Private Chef"],
-    ["3VA-SRV-EXP-07","Pool & Spa Technician"],["3VA-SRV-EXP-08","Hospitality Trainer & SOP Coach"],
-    ["3VA-SRV-EXP-09","Agronomy, Agribusiness & Plantation Consultant"],["3VA-SRV-EXP-10","Aquaculture & Tambak Specialist"],
-    ["3VA-SRV-EXP-11","Mining & Quarry Geotech Advisor"],["3VA-SRV-EXP-12","Doctor On-Call & Villa Medical Support"],
-    ["3VA-SRV-EXP-13","Civil Engineer & Quantity Surveyor (RAB)"],["3VA-SRV-EXP-14","Accounting, Tax & Villa Audit Specialist"],
-    ["3VA-SRV-EXP-15","Translator, Interpreter & Expat Liaison"],["3VA-SRV-EXP-16","IT Programmer & Web/System Specialist"],
-    ["3VA-SRV-EXP-17","Interior Designer & Space Stylist"],["3VA-SRV-EXP-18","Public Area, Gardener & Nursery Specialist"]
+    ["3VA-XP-01","Legal Advisor & Land Due Diligence"],["3VA-XP-02","Sales & Land Consultant"],
+    ["3VA-XP-03","Site Foreman & Building Supervisor"],["3VA-XP-04","MEP & Electrical Technician"],
+    ["3VA-XP-05","AC & Refrigeration Specialist"],["3VA-XP-06","Housekeeper, Butler & Private Chef"],
+    ["3VA-XP-07","Pool & Spa Technician"],["3VA-XP-08","Hospitality Trainer & SOP Coach"],
+    ["3VA-XP-09","Agronomy, Agribusiness & Plantation Consultant"],["3VA-XP-10","Aquaculture & Tambak Specialist"],
+    ["3VA-XP-11","Mining & Quarry Geotech Advisor"],["3VA-XP-12","Doctor On-Call & Villa Medical Support"],
+    ["3VA-XP-13","Civil Engineer & Quantity Surveyor (RAB)"],["3VA-XP-14","Accounting, Tax & Villa Audit Specialist"],
+    ["3VA-XP-15","Translator, Interpreter & Expat Liaison"],["3VA-XP-16","IT Programmer & Web/System Specialist"],
+    ["3VA-XP-17","Interior Designer & Space Stylist"],["3VA-XP-18","Public Area, Gardener & Nursery Specialist"]
   ];
   window.resolve3vaServiceLabel = function(raw) {
     var s = String(raw || "").trim(), all = CORP.concat(EXP);
