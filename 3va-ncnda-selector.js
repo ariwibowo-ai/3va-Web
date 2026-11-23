@@ -125,5 +125,5 @@
     };
   };
 
-  setInterval(injectListingCodes, 600);
+  setInterval(injectListingCodes, 2500);
 })();

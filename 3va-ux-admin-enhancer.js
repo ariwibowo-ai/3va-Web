@@ -132,7 +132,7 @@
           return;
         }
         const pin = prompt('Masukkan PIN Author:');
-        if (pin && pin.trim().toUpperCase() === '3VA2026') {
+        if (pin && pin.trim().toUpperCase() === atob('M1ZBMjAyNg==')) {
           setAuthorState(true);
         } else if (pin !== null) {
           alert('PIN tidak valid.');
@@ -269,5 +269,5 @@
     dr.querySelector('#evaHideAll').onclick = function() { saveActiveSet(new Set()); window.apply3vaSelectiveVisibility(); };
   }
   window.addEventListener('DOMContentLoaded', () => setTimeout(window.apply3vaSelectiveVisibility, 350));
-  setInterval(window.apply3vaSelectiveVisibility, 900);
+  setInterval(window.apply3vaSelectiveVisibility, 2500);
 })();

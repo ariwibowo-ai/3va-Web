@@ -47,7 +47,7 @@
     box.id = 'realtimeLedgerBox';
     box.style.cssText = 'margin-top:18px;padding:14px;background:#f7f9f6;border:1px solid #c9d7c4;border-radius:8px';
     box.innerHTML = `<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px">
-      <div><strong style="color:var(--green)">🔒 Member-Only Real-Time Payment &amp; Escrow Transparency Ledger</strong><div class="small">Verify exact worker net pay (0% deduction) vs. client agency fee in real time.</div></div>
+      <div><strong style="color:var(--green)">🔒 Member-Only Real-Time Payment &amp; Payment Transparency Ledger</strong><div class="small">Verify exact worker net pay (0% deduction) vs. client agency fee in real time.</div></div>
       <div style="display:flex;gap:6px"><input id="ledgerCodeInput" placeholder="Contract Code (e.g. 3VA-VE101)" style="padding:6px 10px;border:1px solid #bbb;border-radius:4px;font-size:13px"><button type="button" class="btn" onclick="viewRealtimeLedger()">Inspect Ledger</button></div>
     </div><div id="ledgerOutput" style="margin-top:10px"></div>`;
     memWrap.appendChild(box);
@@ -62,7 +62,7 @@
     const found = vendors.find(v => v.code.toUpperCase() === code) || (code === '3VA-VE101' ? { code: '3VA-VE101', displayName: 'Sample Hospitality Trainer Expert', category: 'Hospitality Trainer Expert', tariff: 'IDR 10,000,000 / month' } : null);
     if (!found) { out.innerHTML = '<span class="small" style="color:#a33">Code <strong>' + code + '</strong> not found in active member ledger.</span>'; return; }
     out.innerHTML = `<div style="background:#fff;padding:12px;border:1px solid #dfe6dc;border-radius:6px;font-size:13px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:6px"><strong>Contract: ${found.code} · ${found.displayName}</strong><span style="color:var(--green);font-weight:700">● 70/30 ESCROW ACTIVE</span></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px"><strong>Contract: ${found.code} · ${found.displayName}</strong><span style="color:var(--green);font-weight:700">● 70/30 MILESTONE ACTIVE</span></div>
       <table style="width:100%;border-collapse:collapse;font-size:12.5px">
         <tr style="border-bottom:1px solid #eee"><td style="padding:5px 0">1. Gross Worker / Vendor Rate (Agreed Contract)</td><td style="text-align:right;font-weight:700">${found.tariff}</td></tr>
         <tr style="border-bottom:1px solid #eee"><td style="padding:5px 0">2. Client Agency / Platform Fee (10%–17% Paid Separately by Service User)</td><td style="text-align:right;color:var(--green)">0% Deducted from Worker</td></tr>
@@ -97,7 +97,7 @@
     v.style.cssText = 'margin-top:12px;padding:12px;background:#fefce8;border:1.5px solid #ca8a04;border-radius:6px;font-size:12px;color:#1e293b;';
     v.innerHTML = '<div style="font-weight:800;color:#854d0e;margin-bottom:4px;">🛡️ AUTHOR CONFIDENTIAL REMINDER: POST-MAJEURE RESERVE &amp; REKENING KHUSUS</div>' +
       '<div style="font-size:11px;line-height:1.5;margin-bottom:8px;">• <b>Alokasi Internal:</b> Maks. <b>2,5%</b> dari 100% Net Profit transaksi <i>Land + Property</i> (Closed by Buyer) &amp; maks. <b>2,5%</b> dari 100% Net Profit transaksi <i>Services</i> (Closed by Service User).<br>' +
-      '• <b>Pemisahan Rekening:</b> Wajib segera dipindahkan ke <b>Rekening Khusus Perusahaan (Segregated Reserve Account)</b> selain rekening operasional utama EASTVENTURA agar tidak tercampur.<br>' +
+      '• <b>Pemisahan Rekening:</b> Wajib segera dipindahkan ke <b>Rekening Khusus Perusahaan (Official Operational Account)</b> selain rekening operasional utama EASTVENTURA agar tidak tercampur.<br>' +
       '• <b>Tutup Buku 1 Tahun Kalender:</b> Jika nihil klaim Force Majeure selama 1 tahun penuh, dana kembali menjadi hak EASTVENTURA untuk disalurkan ke program <b>Infaq / Shodaqoh / Jariyah</b>.</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">' +
       '<input type="number" id="pmNetProfitInput" placeholder="Input Net Profit Closing (IDR)" style="padding:5px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:12px;width:210px;">' +
@@ -105,6 +105,6 @@
       '<span id="pmCalcOut" style="font-size:11.5px;color:#065f46;"></span></div>';
     box.appendChild(v);
   }
-  window.addEventListener('DOMContentLoaded', function() { setTimeout(injectPostMajeureVault, 500); });
+  window.addEventListener('DOMContentLoaded', function() { setTimeout(injectPostMajeureVault, 2500); });
   setInterval(injectPostMajeureVault, 1500);
 })();

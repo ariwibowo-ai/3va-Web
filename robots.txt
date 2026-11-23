@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eastventura.biz.id/sitemap.xml

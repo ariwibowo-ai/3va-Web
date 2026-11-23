@@ -93,7 +93,7 @@
     const d2 = document.getElementById('userWorkTo')?.value || 'TBD';
     if (confirm('URGENT SERVICE CALL (eastventura.biz.id):\nNeed urgent deployment on a holiday/rest day?\n\nClick OK to connect via WhatsApp (+62 812-3707-9929).')) {
       const txt = encodeURIComponent('Halo Admin Service Call eastventura.biz.id, saya membutuhkan layanan URGENT pada hari libur/khusus.\nDetail: ' + code + '\nTarget Jadwal: ' + d1 + ' s.d. ' + d2);
-      window.open('https://wa.me' + txt, '_blank');
+      window.open('https://wa.me?text=' + txt, '_blank');
     }
   };
 
@@ -115,8 +115,8 @@
         <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>2. Zero Wage Deduction &amp; Agency Fee (10%–17%): Client pays agency/platform fees separately; 100% of agreed wages belong to the worker.</u><br><em style="color:#444">2. Tanpa Potongan Upah &amp; Agency Fee (10%–17%): Klien membayar biaya agensi/platform secara terpisah; 100% upah yang disepakati menjadi hak penuh pekerja.</em></label>
         <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>3. BPJS Ketenagakerjaan (PP No. 44/2015 JKK &amp; JKM): Mandatory registration by Service User for monthly contracts &gt; 1 month, or self/eastventura.biz.id online facilitation (IDR 200,000 flat admin) for short-term/opted-in workers.</u><br><em style="color:#444">3. BPJS Ketenagakerjaan (PP No. 44/2015 JKK &amp; JKM): Pendaftaran wajib oleh Pengguna Jasa untuk kontrak bulanan &gt; 1 bulan, atau mandiri/fasilitasi online eastventura.biz.id (admin flat IDR 200.000) bagi pekerja jangka pendek/yang menyetujui.</em></label>
         <hr style="margin:14px 0;border:0;border-top:1px dashed #999">
-        <p><strong>PAGE 2 OF 2 — ESCROW 70/30, INDONESIAN WORKING CALENDAR &amp; FORCE MAJEURE</strong></p>
-        <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>4. 70/30 Escrow &amp; Working Calendar Compliance: Parties honor 70% DP / 30% completion escrow and Indonesian rest days/religious holidays.</u><br><em style="color:#444">4. Kepatuhan Escrow 70/30 &amp; Kalender Kerja Indonesia: Para pihak mematuhi escrow 70% DP / 30% pelunasan serta hari libur nasional/keagamaan Indonesia.</em></label>
+        <p><strong>PAGE 2 OF 2 — MILESTONE PAYMENT 70/30, INDONESIAN WORKING CALENDAR &amp; FORCE MAJEURE</strong></p>
+        <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>4. 70/30 Milestone Payment &amp; Working Calendar Compliance: Parties honor 70% DP / 30% completion milestone and Indonesian rest days/religious holidays.</u><br><em style="color:#444">4. Kepatuhan Pembayaran Bertahap 70/30 &amp; Kalender Kerja Indonesia: Para pihak mematuhi pembayaran bertahap 70% DP / 30% pelunasan serta hari libur nasional/keagamaan Indonesia.</em></label>
         <label style="display:block;margin:8px 0"><input type="checkbox" class="pact-chk"> <u>5. Force Majeure Clause: Neither party shall be liable for delays caused by natural disasters, extreme weather, or government decrees.</u><br><em style="color:#444">5. Klausul Force Majeure: Tidak ada pihak yang dibebani sanksi atas keterlambatan akibat bencana alam, cuaca ekstrem, atau kebijakan pemerintah.</em></label>
       </div>
       <div style="margin-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px">

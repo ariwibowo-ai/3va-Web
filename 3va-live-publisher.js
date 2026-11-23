@@ -70,7 +70,7 @@
     const guide = document.getElementById('vendorGuidanceBox');
     const tariff = document.getElementById('vendorTariff');
     const benchmark = (VENDOR_MATRIX[role] && VENDOR_MATRIX[role][cat]) || '';
-    if (guide) guide.innerHTML = '<strong>Eastern Indonesia Market Benchmark (' + role + '):</strong> ' + benchmark + '<br><span class="small">Selected Billing Basis: ' + basis + ' · Escrow Protection: 70% DP / 30% Completion.</span>';
+    if (guide) guide.innerHTML = '<strong>Eastern Indonesia Market Benchmark (' + role + '):</strong> ' + benchmark + '<br><span class="small">Selected Billing Basis: ' + basis + ' · Milestone Payment Protection: 70% DP / 30% Completion.</span>';
     if (tariff && !tariff.dataset.edited) tariff.value = benchmark.split('(')[0].trim();
   };
   function hydrateListings() {

@@ -1,22 +1,6 @@
 (function() {
-  var CORP = [
-    ["3VA-CV-01","Civil & Building Contractor"],["3VA-CV-02","MEP, Genset & Solar Engineering"],
-    ["3VA-CV-03","Elevator & Escalator Maintenance"],["3VA-CV-04","Fire Safety & Hydrant Engineering"],
-    ["3VA-CV-05","Corporate Legal, Notary & Licensing Firm"],["3VA-CV-06","Commercial Pest & Termite Control"],
-    ["3VA-CV-07","WTP / STP Water & Waste Treatment"],["3VA-CV-08","Deep Well Drilling & Geoelectric Survey"],
-    ["3VA-CV-09","Interior Design & Architectural Fit-Out"],["3VA-CV-10","Public Area, Garden Maintenance & Plant Nursery"]
-  ];
-  var EXP = [
-    ["3VA-XP-01","Legal Advisor & Land Due Diligence"],["3VA-XP-02","Sales & Land Consultant"],
-    ["3VA-XP-03","Site Foreman & Building Supervisor"],["3VA-XP-04","MEP & Electrical Technician"],
-    ["3VA-XP-05","AC & Refrigeration Specialist"],["3VA-XP-06","Housekeeper, Butler & Private Chef"],
-    ["3VA-XP-07","Pool & Spa Technician"],["3VA-XP-08","Hospitality Trainer & SOP Coach"],
-    ["3VA-XP-09","Agronomy, Agribusiness & Plantation Consultant"],["3VA-XP-10","Aquaculture & Tambak Specialist"],
-    ["3VA-XP-11","Mining & Quarry Geotech Advisor"],["3VA-XP-12","Doctor On-Call & Villa Medical Support"],
-    ["3VA-XP-13","Civil Engineer & Quantity Surveyor (RAB)"],["3VA-XP-14","Accounting, Tax & Villa Audit Specialist"],
-    ["3VA-XP-15","Translator, Interpreter & Expat Liaison"],["3VA-XP-16","IT Programmer & Web/System Specialist"],
-    ["3VA-XP-17","Interior Designer & Space Stylist"],["3VA-XP-18","Public Area, Gardener & Nursery Specialist"]
-  ];
+  var CORP = [['3VA-CV-01', 'Civil & Building Contractor'], ['3VA-CV-02', 'Electrical & Power Engineering (PLN / Solar / Genset)'], ['3VA-CV-03', 'Water & Wastewater Treatment (WTP / IPAL)'], ['3VA-CV-04', 'Heavy Equipment Rental (Alat Berat)'], ['3VA-CV-05', 'Corporate Legal, Notary & Licensing Firm'], ['3VA-CV-06', 'Pest & Termite Control Company'], ['3VA-CV-07', 'Facility Management & MEP Contractor'], ['3VA-CV-08', 'Fire Safety Equipment'], ['3VA-CV-09', 'Interior Design & Architectural Fit-Out'], ['3VA-CV-10', 'Public Area, Garden Maintenance & Plant Nursery']];
+  var EXP = [['3VA-XP-01', 'Legal Advisor & Land Due Diligence'], ['3VA-XP-02', 'Accounting & Tax Specialist'], ['3VA-XP-03', 'Executive Chef & Culinary'], ['3VA-XP-04', 'Pastry & Bakery Specialist'], ['3VA-XP-05', 'Private Butler & Hospitality'], ['3VA-XP-06', 'Housekeeper'], ['3VA-XP-07', 'Pool & Spa Technician'], ['3VA-XP-08', 'MEP Technician (Mechanical, Electrical, Plumbing)'], ['3VA-XP-09', 'Civil & Structural Foreman (Mandor)'], ['3VA-XP-10', 'Carpenter & Woodwork Specialist'], ['3VA-XP-11', 'Air Conditioner (AC) Technician'], ['3VA-XP-12', 'Genset Technician'], ['3VA-XP-13', 'Water & Wastewater Treatment (WTP / IPAL) Operator'], ['3VA-XP-14', 'Pest & Termite Control Technician'], ['3VA-XP-15', 'Fire Safety Equipment Specialist'], ['3VA-XP-16', 'IT Programmer & Web/System Specialist'], ['3VA-XP-17', 'Interior Designer & Space Stylist'], ['3VA-XP-18', 'Public Area, Gardener & Nursery Specialist']];
   window.resolve3vaServiceLabel = function(raw) {
     var s = String(raw || "").trim(), all = CORP.concat(EXP);
     for (var i = 0; i < all.length; i++) {

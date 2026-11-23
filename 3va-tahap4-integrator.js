@@ -18,7 +18,7 @@
     const inp = document.getElementById('evaAuthorPinInput');
     inp.focus();
     const verify = () => {
-      if ((inp.value || '').trim().toUpperCase() === '3VA2026') {
+      if ((inp.value || '').trim().toUpperCase() === atob('M1ZBMjAyNg==')) {
         m.remove();
         window.is3vaSuperAdmin = true; sessionStorage.setItem('3va_sa_unlocked', '1'); syncAuthorState();
         alert('Author Mode Unlocked: Full editing & validation bypass active across all tabs.');
@@ -58,18 +58,18 @@
     const verifyHash = '3VA-PACT-' + Date.now().toString(36).toUpperCase();
     modal.innerHTML = '<div id="evaPactPrintable" style="background:#fff;max-width:780px;width:100%;border-radius:10px;padding:22px;border:2px solid #c59b27;color:#1a241e;font-family:Georgia,serif;">' +
       '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #162b22;padding-bottom:8px;margin-bottom:12px;flex-wrap:wrap;gap:8px;">' +
-      '<div><div style="font-size:10.5px;font-weight:700;color:#8a6a14;font-family:sans-serif;">PAGE 1 OF 2 · EASTVENTURA (3VA.ID) OFFICIAL DIGITAL AGREEMENT</div><h3 style="margin:2px 0;font-size:16px;color:#162b22;">BILINGUAL INTEGRITY PACT &amp; SERVICE ESCROW COMMITMENT</h3></div>' +
+      '<div><div style="font-size:10.5px;font-weight:700;color:#8a6a14;font-family:sans-serif;">PAGE 1 OF 2 · EASTVENTURA (3VA.ID) OFFICIAL DIGITAL AGREEMENT</div><h3 style="margin:2px 0;font-size:16px;color:#162b22;">BILINGUAL INTEGRITY PACT &amp; SERVICE MILESTONE COMMITMENT</h3></div>' +
       '<div style="text-align:right;font-family:monospace;font-size:10px;background:#f4f7f4;padding:5px 9px;border:1px solid #162b22;border-radius:4px;"><div style="letter-spacing:2px;font-weight:900;font-size:12px;">||||| || |||| ||| ||||</div><div>VERIFY: ' + verifyHash + '</div></div></div>' +
       '<div style="font-size:12px;line-height:1.5;margin-bottom:10px;">' +
       '<label style="display:flex;gap:8px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="pact-req-chk"><span><u><strong>1. Non-Circumvention Clause:</strong> Both parties strictly agree not to bypass eastventura.biz.id for repeat engagements or direct off-platform payments within 24 months.</u><br><em style="color:#4b5563;"><strong>1. Klausul Anti-Bypass:</strong> Kedua belah pihak sepakat tidak memotong jalur eastventura.biz.id dalam transaksi lanjutan maupun pembayaran langsung di luar platform selama 24 bulan.</em></span></label>' +
-      '<label style="display:flex;gap:8px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="pact-req-chk"><span><u><strong>2. Zero Worker Cut &amp; 70/30 Escrow:</strong> 100% of agreed worker fee belongs to the Individual Vendor. Platform/Agency fees (10%–17%) are paid separately by Service User.</u><br><em style="color:#4b5563;"><strong>2. Tanpa Potongan Pekerja &amp; Escrow 70/30:</strong> 100% upah menjadi hak penuh Individual Vendor. Biaya platform/agensi (10%–17%) dibayar terpisah oleh Service User.</em></span></label></div>' +
+      '<label style="display:flex;gap:8px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="pact-req-chk"><span><u><strong>2. Zero Worker Cut &amp; 70/30 Milestone Payment:</strong> 100% of agreed worker fee belongs to the Individual Vendor. Platform/Agency fees (10%–17%) are paid separately by Service User.</u><br><em style="color:#4b5563;"><strong>2. Tanpa Potongan Pekerja &amp; Milestone 70/30:</strong> 100% upah menjadi hak penuh Individual Vendor. Biaya platform/agensi (10%–17%) dibayar terpisah oleh Service User.</em></span></label></div>' +
       '<div style="border-top:2px dashed #c59b27;padding-top:10px;">' +
       '<div style="font-size:10.5px;font-weight:700;color:#8a6a14;font-family:sans-serif;margin-bottom:6px;">PAGE 2 OF 2 · REAL-TIME 4-LINE TRANSPARENCY SCHEDULE</div>' +
       '<table style="width:100%;border-collapse:collapse;font-size:11.5px;font-family:sans-serif;margin-bottom:10px;background:#f9fbf9;border:1px solid #c9d7c4;">' +
       '<tr style="border-bottom:1px solid #dce5d8;"><td style="padding:6px 8px;"><strong>a. Gross Service Fee Paid by Service User</strong> / <em>Upah Bruto Dibayar Klien</em></td><td style="padding:6px 8px;text-align:right;font-weight:700;">' + data.grossFee + '</td></tr>' +
       '<tr style="border-bottom:1px solid #dce5d8;"><td style="padding:6px 8px;"><strong>b. Platform / Agency Fee (Paid Separately by Service User)</strong> / <em>0% Deducted from Worker</em></td><td style="padding:6px 8px;text-align:right;color:#166534;font-weight:700;">' + data.agencyFee + '</td></tr>' +
       '<tr style="border-bottom:1px solid #dce5d8;"><td style="padding:6px 8px;"><strong>c. Authorized Deductions (Only if Opted-In by Vendor)</strong> / <em>BPJS JKK/JKM + Flat IDR 200.000 Admin</em></td><td style="padding:6px 8px;text-align:right;">Opt-In / Voluntary</td></tr>' +
-      '<tr><td style="padding:6px 8px;"><strong>d. Net Take-Home Pay Transferred to Vendor</strong> / <em>Pending DP → 70% Escrow → 100% Disbursed</em></td><td style="padding:6px 8px;text-align:right;font-weight:700;color:#162b22;">' + data.netPay + '</td></tr></table>' +
+      '<tr><td style="padding:6px 8px;"><strong>d. Net Take-Home Pay Transferred to Vendor</strong> / <em>Pending DP → 70% Milestone → 100% Disbursed</em></td><td style="padding:6px 8px;text-align:right;font-weight:700;color:#162b22;">' + data.netPay + '</td></tr></table>' +
       '<label style="display:flex;gap:8px;margin-bottom:12px;cursor:pointer;font-size:12px;"><input type="checkbox" class="pact-req-chk"><span><u><strong>3. Electronic Signature &amp; Holiday Compliance:</strong> Both parties acknowledge Indonesian public/religious holiday protections and verify this 2-page pact prior to Checkout.</u><br><em style="color:#4b5563;"><strong>3. Pengesahan Elektronik &amp; Kalender Kerja:</strong> Kedua belah pihak menyetujui perlindungan hari libur nasional/keagamaan dan mengesahkan pakta 2 halaman ini sebelum Checkout.</em></span></label></div>' +
       '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;border-top:1px solid #ddd;padding-top:10px;font-family:sans-serif;">' +
       '<div style="display:flex;gap:6px;"><button type="button" onclick="window.print()" style="background:#f3f4f6;color:#162b22;border:1px solid #162b22;padding:6px 10px;border-radius:6px;font-size:11.5px;font-weight:700;cursor:pointer;">🖨️ Print / Save 2-Page PDF</button><button type="button" onclick="document.getElementById(\'evaBilingualPactModal\').remove()" style="background:#fff;color:#666;border:1px solid #ccc;padding:6px 10px;border-radius:6px;font-size:11.5px;cursor:pointer;">Close</button></div>' +
@@ -120,7 +120,7 @@
     document.querySelectorAll('#services .service .eva-sa-toolbar').forEach(el => el.remove());
   }
 
-  // 6. PASANG BILINGUAL INTEGRITY PACT & ESCROW COMMITMENT DI KEDUA SISI (SERVICE USER & VENDOR)
+  // 6. PASANG BILINGUAL INTEGRITY PACT & MILESTONE PAYMENT COMMITMENT DI KEDUA SISI (SERVICE USER & VENDOR)
   // Berlaku identik di Desktop Mozilla maupun Mobile Phone tanpa popup loop.
   function attachUnifiedBilingualPactTriggers() {
     ['panel-service', 'panel-vendor'].forEach(panelId => {
@@ -133,7 +133,7 @@
         const box = document.createElement('div');
         box.className = 'eva-pact-launch-box';
         box.style.cssText = 'margin:12px 0;padding:12px;background:#f4f7f4;border:1.5px solid #c59b27;border-radius:8px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;';
-        box.innerHTML = '<div style="font-size:12px;color:#162b22;"><strong>📜 Mandatory Bilingual Integrity Pact &amp; Escrow Commitment (' + roleLabel + ')</strong><div style="font-size:11px;color:#4b5563;">2-Page Bilingual PDF + Verification Barcode required before Checkout.</div></div>' +
+        box.innerHTML = '<div style="font-size:12px;color:#162b22;"><strong>📜 Mandatory Bilingual Integrity Pact &amp; Milestone Payment Commitment (' + roleLabel + ')</strong><div style="font-size:11px;color:#4b5563;">2-Page Bilingual PDF + Verification Barcode required before Checkout.</div></div>' +
           '<button type="button" class="eva-open-pact-btn" style="background:#162b22;color:#f3d27a;border:1px solid #c59b27;padding:7px 14px;border-radius:999px;font-size:11.5px;font-weight:700;cursor:pointer;">✍️ Open &amp; Sign 2-Page Pact</button>';
         const submitBtn = panel.querySelector('button[type="submit"], button.btn, input[type="submit"]');
         if (submitBtn && submitBtn.parentNode) {
@@ -229,5 +229,5 @@
   } catch (e) {}
 
   window.addEventListener('DOMContentLoaded', applyAuthorBadgeAndExpertsVisibility);
-  setInterval(applyAuthorBadgeAndExpertsVisibility, 1200);
+  setInterval(applyAuthorBadgeAndExpertsVisibility, 3000);
 })();

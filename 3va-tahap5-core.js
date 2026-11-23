@@ -32,7 +32,7 @@
     document.getElementById("eva5GateBody").innerHTML =
       '<div style="text-align:center;padding:8px 4px;">' +
         '<div style="font-size:16px;font-weight:800;color:#1e3a2f;margin-bottom:6px;">We care of your urgent matters!</div>' +
-        '<p style="color:#475569;margin:0 0 8px;">Daftar member <b>eastventura.biz.id</b> untuk prioritas teknisi darurat &amp; perlindungan escrow 70/30.</p>' +
+        '<p style="color:#475569;margin:0 0 8px;">Daftar member <b>eastventura.biz.id</b> untuk prioritas teknisi darurat &amp; skema pembayaran bertahap 70/30.</p>' +
         '<div style="background:#f0fdf4;border:1px solid #86efac;padding:7px;border-radius:6px;font-size:11.5px;color:#166534;"><b>Klausul Pajak Layanan (3VA-SRV):</b> Tarif jasa sudah termasuk pajak yang berlaku (<i>Tax Included</i>).</div>' +
       '</div>';
     document.getElementById("eva5GateFoot").innerHTML = '<button type="button" class="eva5-btn eva5-skip" id="e5SrvSkip">SKIP</button><button type="button" class="eva5-btn eva5-ok" id="e5SrvOk">OK</button>';
@@ -126,5 +126,5 @@
       document.getElementById("aClrBtn").onclick = function() { var c = document.getElementById("aCodeIn").value.trim().toUpperCase(); var mp = getDpMap(); delete mp[c]; localStorage.setItem("eva5_dp_map", JSON.stringify(mp)); syncCatalogDp(); alert("Reset: " + c); };
     }
   }
-  setInterval(function() { syncCatalogDp(); hookAll(); syncSelectsAndAuthor(); }, 500);
+  setInterval(function() { syncCatalogDp(); hookAll(); syncSelectsAndAuthor(); }, 2500);
 })();
