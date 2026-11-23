@@ -236,37 +236,67 @@
     });
     renderAuthorDrawer(open, active);
   };
+  let drawerExpanded = false;
   function renderAuthorDrawer(open, active) {
+    let trig = document.getElementById('evaCardActivatorBtn');
     let dr = document.getElementById('evaAuthorDrawer');
-    if (!open) { if (dr) dr.remove(); return; }
+    if (!open) {
+      drawerExpanded = false;
+      if (trig) trig.remove();
+      if (dr) dr.remove();
+      return;
+    }
+    if (!trig) {
+      trig = document.createElement('button');
+      trig.id = 'evaCardActivatorBtn';
+      trig.type = 'button';
+      trig.style.cssText = 'position:fixed;bottom:52px;right:14px;z-index:99999;background:#162b22;color:#f3d27a;border:1.5px solid #c59b27;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);';
+      trig.onclick = function(e) {
+        e.preventDefault(); e.stopPropagation();
+        drawerExpanded = !drawerExpanded;
+        renderAuthorDrawer(true, getActiveSet());
+      };
+      document.body.appendChild(trig);
+    }
+    trig.textContent = (drawerExpanded ? '✕ ' : '▤ ') + 'Card Activator (' + active.size + '/' + ALL_CODES.length + ')';
+    trig.style.background = drawerExpanded ? '#c59b27' : '#162b22';
+    trig.style.color = drawerExpanded ? '#162b22' : '#f3d27a';
+
+    if (!drawerExpanded) {
+      if (dr) dr.remove();
+      return;
+    }
     if (!dr) {
       dr = document.createElement('div');
       dr.id = 'evaAuthorDrawer';
-      dr.style.cssText = 'position:fixed;left:12px;right:12px;bottom:54px;z-index:99990;background:#162b22;color:#fbf9f3;border:1.5px solid #c59b27;border-radius:10px;padding:12px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-height:46vh;overflow-y:auto;font-size:12px;';
+      dr.style.cssText = 'position:fixed;right:14px;bottom:92px;width:245px;max-width:86vw;max-height:68vh;overflow-y:auto;z-index:99995;background:#162b22;color:#fbf9f3;border:1.5px solid #c59b27;border-radius:10px;padding:11px 12px;box-shadow:0 12px 32px rgba(0,0,0,.42);font-size:11.5px;';
       document.body.appendChild(dr);
     }
-    const mkPills = (title, codes) => '<div style="margin-top:6px;"><strong style="color:#f3d27a;">' + title + ':</strong> ' +
+    const mkPills = (title, codes) => '<div style="margin-top:8px;"><div style="color:#f3d27a;font-weight:700;font-size:11px;margin-bottom:4px;">' + title + '</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">' +
       codes.map(c => {
         const on = active.has(c);
-        return '<button type="button" data-code="' + c + '" style="margin:2px;padding:3px 7px;border-radius:4px;font-family:monospace;font-size:11px;cursor:pointer;border:1px solid #c59b27;background:' + (on ? '#c59b27' : '#234235') + ';color:' + (on ? '#162b22' : '#fbf9f3') + ';font-weight:' + (on ? '800' : '500') + ';">' + (on ? '✓ ' : '') + c + '</button>';
-      }).join('') + '</div>';
-    dr.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:1px solid rgba(197,155,39,.35);padding-bottom:6px;">' +
-      '<div><strong style="color:#f3d27a;letter-spacing:.6px;">✦ AUTHOR SELECTIVE CARD ACTIVATOR</strong> <span style="opacity:.85;">(' + active.size + ' / ' + ALL_CODES.length + ' Active for Public)</span></div>' +
-      '<div style="display:flex;gap:6px;">' +
-      '<button type="button" id="evaActAll" style="background:#c59b27;color:#162b22;border:none;padding:4px 9px;border-radius:4px;font-weight:700;cursor:pointer;">Activate All</button>' +
-      '<button type="button" id="evaHideAll" style="background:#7f1d1d;color:#fff;border:none;padding:4px 9px;border-radius:4px;font-weight:700;cursor:pointer;">Hide All (Soft Launch)</button>' +
+        return '<button type="button" data-code="' + c + '" style="padding:4px 5px;border-radius:4px;font-family:monospace;font-size:10.5px;cursor:pointer;border:1px solid #c59b27;text-align:center;background:' + (on ? '#c59b27' : '#234235') + ';color:' + (on ? '#162b22' : '#fbf9f3') + ';font-weight:' + (on ? '800' : '500') + ';">' + (on ? '✓ ' : '') + c + '</button>';
+      }).join('') + '</div></div>';
+
+    dr.innerHTML = '<div style="border-bottom:1px solid rgba(197,155,39,.35);padding-bottom:7px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="color:#f3d27a;letter-spacing:.7px;font-size:12px;">CARD ACTIVATOR</strong><span style="opacity:.85;font-size:11px;">' + active.size + '/' + ALL_CODES.length + '</span></div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">' +
+      '<button type="button" id="evaActAll" style="background:#c59b27;color:#162b22;border:none;padding:5px 6px;border-radius:4px;font-weight:700;font-size:11px;cursor:pointer;">Active (All)</button>' +
+      '<button type="button" id="evaHideAll" style="background:#7f1d1d;color:#fff;border:none;padding:5px 6px;border-radius:4px;font-weight:700;font-size:11px;cursor:pointer;">Hide (All)</button>' +
       '</div></div>' +
       mkPills('Land for Sale', LAND_CODES) + mkPills('Property for Sale', PROP_CODES) +
       mkPills('Corporate Vendor', CORP_CODES) + mkPills('Human Expert', EXP_CODES);
+
     dr.querySelectorAll('button[data-code]').forEach(b => {
-      b.onclick = function() {
+      b.onclick = function(ev) {
+        ev.stopPropagation();
         const s = getActiveSet(), code = this.dataset.code;
         if (s.has(code)) s.delete(code); else s.add(code);
         saveActiveSet(s); window.apply3vaSelectiveVisibility();
       };
     });
-    dr.querySelector('#evaActAll').onclick = function() { saveActiveSet(new Set(ALL_CODES)); window.apply3vaSelectiveVisibility(); };
-    dr.querySelector('#evaHideAll').onclick = function() { saveActiveSet(new Set()); window.apply3vaSelectiveVisibility(); };
+    dr.querySelector('#evaActAll').onclick = function(ev) { ev.stopPropagation(); saveActiveSet(new Set(ALL_CODES)); window.apply3vaSelectiveVisibility(); };
+    dr.querySelector('#evaHideAll').onclick = function(ev) { ev.stopPropagation(); saveActiveSet(new Set()); window.apply3vaSelectiveVisibility(); };
   }
   window.addEventListener('DOMContentLoaded', () => setTimeout(window.apply3vaSelectiveVisibility, 350));
   setInterval(window.apply3vaSelectiveVisibility, 2500);
