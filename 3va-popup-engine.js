@@ -144,7 +144,15 @@
       e.preventDefault(); e.stopImmediatePropagation();
       var i=document.querySelector("input[name*=price],input[id*=price]");
       var val=i?parseFloat(i.value.replace(/[^0-9]/g,"")):15e8;
-      open3va("buyer",val||15e8,function(){b.dataset.ok="1";b.click();});
+      open3va("buyer",val||15e8,function(){
+        b.dataset.ok="1";
+        b.click();
+        setTimeout(function(){
+          delete b.dataset.ok;
+          var rm = document.getElementById("roleMessage");
+          if (rm) rm.scrollIntoView({behavior:"smooth", block:"center"});
+        }, 120);
+      });
     }
   }, true);
 })();
