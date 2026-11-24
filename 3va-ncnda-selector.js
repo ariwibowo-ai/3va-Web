@@ -126,4 +126,21 @@
   };
 
   setInterval(injectListingCodes, 2500);
+
+  // Anti-Stuck Guard: Pulihkan #loginModal (Tab 2 Buyer) secara otomatis setelah pop-up tanda tangan #evaM ditutup
+  setInterval(function() {
+    if (!hiddenMemberModals.length) return;
+    var m = document.getElementById("evaM");
+    var banner = document.getElementById("evaSelectBanner");
+    var mClosed = !m || window.getComputedStyle(m).display === "none";
+    if (mClosed && !banner) {
+      restoreMemberModals();
+      var lm = document.getElementById("loginModal");
+      if (lm) {
+        lm.style.removeProperty("display");
+        lm.classList.add("show");
+      }
+      if (typeof window.switchTab === "function") window.switchTab("buyer");
+    }
+  }, 600);
 })();
